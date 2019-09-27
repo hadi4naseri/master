@@ -1,0 +1,22 @@
+<?php
+session_start();
+$temp_path=getcwd();
+chdir(substr(str_replace("admin","",dirname(__FILE__)),0,-1));
+require_once("config.php");
+require_once("db/functions.php");
+if (has_access($_SERVER['PHP_SELF'],@$_COOKIE['current_user']))
+{
+  chdir($temp_path);
+  require_once("functions.php");
+  $sm=create_admin_smarty_obj();
+  $sm->assign("adm_path",admin_path);
+  $sm->assign("site_domain",siteDomain);
+  $all_grps=select("users_groups","group_name,id");
+  $sm->assign("all_groups",$all_grps);
+  $sm->display("new_group.tpl");
+  }
+else
+{
+	access_denied();
+} 
+?>

@@ -1,0 +1,11 @@
+ErrorDocument 404 http://localhost/Mobina_new_master/Public/App/Pages/404.htm
+Options -Indexes
+ErrorDocument 403 http://localhost/Mobina_new_master/Public/App/Pages/403.htm
+
+
+RewriteEngine On 
+RewriteRule ^favicon\.(gif|ico|png|jpe?g)$ /Public/Assets/favicon.ico [L,NC]
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^([^?]*)$ /index.php?path=$1 [NC,L,QSA]

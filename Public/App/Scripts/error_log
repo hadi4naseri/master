@@ -1,0 +1,50 @@
+[21-Dec-2012 21:28:50] PHP Warning:  unlink(Files/db-backup-21.12.12.sql) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in /home/bhmehr/public_html/mobina/admin/delete_backup.php on line 2
+[20-Feb-2013 16:45:47] PHP Fatal error:  Uncaught exception 'SmartyCompilerException' with message 'Syntax Error in template "templates/edit_page.tpl"  on line 78 "{/literal}" missing or misspelled literal closing tag' in /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatecompilerbase.php:627
+Stack trace:
+#0 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatelexer.php(988): Smarty_Internal_TemplateCompilerBase->trigger_template_error('missing or miss...')
+#1 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatelexer.php(910): Smarty_Internal_Templatelexer->yy_r3_7(Array)
+#2 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatelexer.php(99): Smarty_Internal_Templatelexer->yylex3()
+#3 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_smartytemplatecompiler.php(100): Smarty_Internal_Templatelexer->yylex()
+#4 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatecompilerbase.php(171): Smarty_Internal_SmartyT in /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatecompilerbase.php on line 627
+[05-Jun-2013 20:22:56] PHP Parse error:  syntax error, unexpected T_ELSE in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 15
+[08-Jun-2013 08:54:22] PHP Parse error:  syntax error, unexpected ';' in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 11
+[08-Jun-2013 09:07:58] PHP Parse error:  syntax error, unexpected ';' in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 11
+[08-Jun-2013 09:26:06] PHP Warning:  move_uploaded_file() [<a href='function.move-uploaded-file'>function.move-uploaded-file</a>]: Unable to access http://www.bh-mehregan.com/mobina/admin/Files/Users/admin/mpthreetest.mp3 in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[08-Jun-2013 09:47:46] PHP Warning:  copy(http://www.bh-mehregan.com/mobina/admin/Files/Users/admin/mpthreetest.mp3) [<a href='function.copy'>function.copy</a>]: failed to open stream: HTTP wrapper does not support writeable connections in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 20
+[08-Jun-2013 09:51:44] PHP Warning:  copy(http://www.bh-mehregan.com/mobina/admin/Files/Users/admin/mpthreetest.mp3) [<a href='function.copy'>function.copy</a>]: failed to open stream: HTTP wrapper does not support writeable connections in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 20
+[08-Jun-2013 09:54:10] PHP Warning:  move_uploaded_file() [<a href='function.move-uploaded-file'>function.move-uploaded-file</a>]: Unable to access http://www.bh-mehregan.com/mobina/admin/Files/Users/admin/mpthreetest.mp3 in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 20
+[08-Jun-2013 09:58:42] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina/admin/Files/Users/admin/ in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[08-Jun-2013 10:00:11] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina/admin/Files/Users/ in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[08-Jun-2013 10:01:49] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[08-Jun-2013 10:01:49] PHP Warning:  move_uploaded_file() [<a href='function.move-uploaded-file'>function.move-uploaded-file</a>]: Unable to access /Files/Users/admin/mpthreetest.mp3 in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 20
+[08-Jun-2013 10:03:28] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[08-Jun-2013 10:05:14] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[08-Jun-2013 10:06:28] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[08-Jun-2013 10:29:12] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[11-Jun-2013 07:27:47] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[11-Jun-2013 07:36:00] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[11-Jun-2013 07:36:12] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[11-Jun-2013 07:39:09] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[11-Jun-2013 07:39:24] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[11-Jun-2013 07:40:58] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[11-Jun-2013 08:30:08] PHP Fatal error:  Uncaught exception 'SmartyCompilerException' with message 'Syntax Error in template "templates/new_sound.tpl"  on line 210 "&lt;li&gt;&lt;a hr" unclosed {else} tag' in /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatecompilerbase.php:627
+Stack trace:
+#0 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_smartytemplatecompiler.php(118): Smarty_Internal_TemplateCompilerBase->trigger_template_error('unclosed {else}...')
+#1 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatecompilerbase.php(171): Smarty_Internal_SmartyTemplateCompiler->doCompile('<!DOCTYPE html ...')
+#2 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_template.php(187): Smarty_Internal_TemplateCompilerBase->compileTemplate(Object(Smarty_Internal_Template))
+#3 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatebase.php(164): Smarty_Internal_Template->compileTemplateSource()
+#4 /home/bhmehr/public_html/mobina/admin/libs/sysplug in /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatecompilerbase.php on line 627
+[11-Jun-2013 10:16:55] PHP Fatal error:  Uncaught exception 'SmartyCompilerException' with message 'Syntax Error in template "templates/index.tpl"  on line 22 "{literal}" missing or misspelled literal closing tag' in /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatecompilerbase.php:627
+Stack trace:
+#0 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatelexer.php(988): Smarty_Internal_TemplateCompilerBase->trigger_template_error('missing or miss...')
+#1 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatelexer.php(910): Smarty_Internal_Templatelexer->yy_r3_7(Array)
+#2 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatelexer.php(99): Smarty_Internal_Templatelexer->yylex3()
+#3 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_smartytemplatecompiler.php(100): Smarty_Internal_Templatelexer->yylex()
+#4 /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatecompilerbase.php(171): Smarty_Internal_SmartyTempla in /home/bhmehr/public_html/mobina/admin/libs/sysplugins/smarty_internal_templatecompilerbase.php on line 627
+[11-Jun-2013 10:33:07] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[11-Jun-2013 10:45:16] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[11-Jun-2013 10:46:31] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[11-Jun-2013 12:26:47] PHP Warning:  unlink() [<a href='function.unlink'>function.unlink</a>]: http does not allow unlinking in /home/bhmehr/public_html/mobina/admin/delete_file.php on line 2
+[11-Jun-2013 12:42:45] PHP Warning:  unlink() [<a href='function.unlink'>function.unlink</a>]: http does not allow unlinking in /home/bhmehr/public_html/mobina/admin/delete_file.php on line 2
+[11-Jun-2013 12:55:05] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18
+[12-Jun-2013 18:51:39] PHP Warning:  chdir() [<a href='function.chdir'>function.chdir</a>]: Unable to access http://www.bh-mehregan.com/mobina in /home/bhmehr/public_html/mobina/admin/upload_files.php on line 18

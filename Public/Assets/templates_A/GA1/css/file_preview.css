@@ -1,0 +1,81 @@
+﻿
+
+.dropdown,.dropdown2 {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+div#list, .dropdown dt, .dropdown ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+div#list {
+    position: relative;
+    overflow: auto;
+    max-height: 300px;
+}
+
+.dropdown a, .dropdown a:visited, .dropdown2 a, .dropdown2 a:visited {
+    color: #816C5B;
+    text-decoration: none;
+    outline: medium none;
+}
+
+.dropdown a:hover, .dropdown2 a:hover {
+    color: #5D4617;
+}
+
+.dropdown dt a:hover, .dropdown2 dt a:hover {
+    color: #5D4617;
+    border: 1px solid #D0C9AF;
+}
+
+.dropdown dt a, .dropdown2 dt a {
+    display: block;
+    border: 1px solid #D4CA9A;
+    width: 150px;
+    background: url("../images/arrow.png") no-repeat scroll right center #E4DFCB;
+    padding-right: 5px;
+}
+
+.dropdown dt a span, .dropdown2 dt a span {
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    padding: 3px;
+    text-align: center;
+}
+
+div#list ul {
+    background: none repeat scroll 0px 0px #E4DFCB;
+    border: 1px solid #D4CA9A;
+    color: #C5C0B0;
+    display: none;
+    left: 0px;
+    padding: 5px 0px;
+    position: relative;
+    top: 2px;
+    width: auto;
+    min-width: 170px;
+    list-style: none outside none;
+}
+
+div#list span.value {
+    display: none;
+}
+
+div#list ul li a {
+    padding: 5px;
+    display: block;
+}
+
+div#list ul li a:hover {
+    background-color: #D0C9AF;
+}
+
+div#list ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+

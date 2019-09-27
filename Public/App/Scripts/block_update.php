@@ -1,0 +1,24 @@
+<?php
+session_start();
+$temp_path=getcwd();
+chdir(substr(str_replace("admin","",dirname(__FILE__)),0,-1));
+require_once("config.php");
+require_once("db/functions.php");
+if (has_access($_SERVER['PHP_SELF'],@$_COOKIE['current_user']))
+{
+  $block=select("blocks","title,content,colmn,vposition","id=".$_GET['bid']);
+  chdir($temp_path);
+  require_once("functions.php");
+  $sm=create_admin_smarty_obj();
+  $sm->assign("block",$block);
+  $sm->assign("block_id",$_GET['bid']);
+  $sm->assign("site_layout",$_GET['lyt']);
+  $sm->assign("site_domain",siteDomain);
+  $sm->assign("adm_path",admin_path);
+  $sm->display("edit_block.tpl");
+  }
+else
+{
+	access_denied();
+}
+?>

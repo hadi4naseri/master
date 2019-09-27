@@ -1,0 +1,1 @@
+﻿{eval var=$template_functions_tpl|html_entity_decode}

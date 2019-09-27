@@ -1,0 +1,25 @@
+<?php
+  session_start();
+  $temp_path=getcwd();
+  chdir(substr(str_replace("admin","",dirname(__FILE__)),0,-1));
+  require_once("config.php");
+  require_once("db/functions.php");
+  if (has_access($_SERVER['PHP_SELF'],@$_COOKIE['current_user']))
+  {  
+	  chdir($temp_path);
+	  require_once("functions.php");
+	  $sm=create_admin_smarty_obj();
+	  $sm->assign("adm_path",admin_path);
+	  $user_info=explode("/",translate_cookie($_COOKIE['current_user']));
+	  $dt=select("users","username,slt,id,name","id=".$user_info[2]);
+	  $sm->assign("username",$dt[0][0]);
+	  $sm->assign("salt",$dt[0][1]);
+	  $sm->assign("uid",$dt[0][2]);
+	  $sm->assign("uname",$dt[0][3]);
+	  $sm->display("change_pass.tpl");
+  }
+    else
+{
+	access_denied();
+}
+?>

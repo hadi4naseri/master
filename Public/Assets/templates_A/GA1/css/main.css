@@ -1,0 +1,97 @@
+
+
+@font-face {
+    font-family: 'Naskh';
+    src: url('../fonts/naskh.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+option,select
+{
+	font-family:Naskh,Tahoma;
+}
+
+input[type=button]
+{
+	font-family:Naskh,Tahoma;
+}
+
+input[type=text]
+{
+	font-family:Naskh,Tahoma;
+	font-weight:bold;
+}
+body {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Naskh,Tahoma;
+    font-size: 12px;
+    width: 900px;
+    color:black;
+    height: 600px;
+    max-height: 100%;
+   	/*background-color: #023149;*/
+}
+
+img.background-image {
+    height: auto;
+    left: 0;
+    min-height: 100%;
+    min-width: 1024px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+
+#main {
+	margin-top: 50px;
+}
+table#main
+{
+	
+	height:100%;
+	width:100%;
+}
+a{
+	text-decoration:none;
+	color:white;
+}
+a:hover{
+	text-decoration:underline;
+	color:black;
+}
+td#copyright img{
+	vertical-align:-18px;
+	border:0px;
+}
+td#copyright a
+{
+	color:orange;
+	text-decoration:none;
+	font-weight:bold;
+}
+td#copyright{
+	height:40px;
+
+}
+td{
+	vertical-align:middle;
+	margin:3px;
+	padding:3px;
+}
+a.cnt
+{
+	color:inherit;
+}
+img.menu_icon
+{
+	padding-left:20px;
+	padding-right:20px;
+}
+td
+{
+	text-align:center;
+}

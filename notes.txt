@@ -1,0 +1,29 @@
+zlib.output_compression = on
+expose_php = On
+ServerTokens ProductOnly
+ServerSignature Off
+
+MD5( username + ":mongo:" + password_text )
+
+NC = No Case (not case sensitive, not really necessary since there are no characters in the pattern)
+
+L = Last (it'll stop rewriting at after this Rewrite so make sure it's the last thing in your list of rewrites)
+
+QSA = Query String Apend, just in case you've got something like ?like=penguins on the end which you want to keep and pass to index.php.
+/+tenants
+
+use products
+db.createUser( { "user" : "sd_admin",
+                 "pwd": "SDsd@1234",
+                 "roles" : [ { role: "dbAdmin", db: "service_desk" },
+                             "readWrite"
+                             ] } )
+
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+
+$_SERVER['REQUEST_URI']
+
+برداشتها از سیستم
+
+ماژولها میتوانند عمومی و خصوصی باشند
+عمومی در مستر و خصوصی در تننت

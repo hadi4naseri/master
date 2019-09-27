@@ -1,0 +1,1 @@
+<p style="color:black;">admin template....</p>
