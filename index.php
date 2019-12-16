@@ -15,7 +15,6 @@ exit();
 }
 
 
-
 /*
 	
 	$s_ini=select("config","site_title,visit_count,site_keywords,site_color,box_color,site_bg_pic,site_width,site_layout,columns_width,site_box,maintain_mode,maintain_msg,template_name","id=".$_SESSION['site_index']);

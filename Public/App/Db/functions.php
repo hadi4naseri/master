@@ -67,49 +67,13 @@ function select($tenant,$collectionName,$project=array(),$condition=array(),$lim
 }
 
 
-function select_distinct($tablename,$criteria,$condition="")
-{
-  $tablename=$_SESSION['db_prefix'].$tablename;
-  $connection=connect();
-  if ($condition!="")
-     $result=$connection->query("select distinct ".$criteria." from ".$tablename." where ".$condition);
-  else
-     $result=$connection->query("select distinct ".$criteria." from ".$tablename);
-  //return data...
-  $ret = array(); 
-  while($row = $result->fetch(PDO::FETCH_NUM)) {
-    array_push($ret,$row);
-	}
-	$result->closeCursor();
-	$connection = null;	
-  return $ret;
-}
-
 function insert($tenant,$collectionName,$data)
 {
-/*
-  //make field list
-  $arr_keys=array();
-  $arr_keys=array_keys($data);
-  $names="";
-  
-  $names.=$arr_keys[0];
-  for($i=1;$i<count($arr_keys);$i++)
-     $names.=",".$arr_keys[$i];
-  
-  //make value list
-  $arr_vals=array();
-  $arr_vals=array_values($data);
-  $values="";
-  
-  $values.="'".$arr_vals[0]."'";
-  for($i=1;$i<count($arr_vals);$i++)
-     $values.=",'".$arr_vals[$i]."'";
-    
-  */
   
   $connection=connect($tenant);
   $collectionName=$connection['tenantCollectionPrefix'].$collectionName;
+  
+  
   try{    
   $result=$connection['connctionString']->$connection['tenantDbName']->$collectionName->insert($data);
   return $result['ok'];
@@ -118,59 +82,23 @@ function insert($tenant,$collectionName,$data)
   {
 	echo "error message: ".$e->getMessage()."\n";
   }
-  
+	  
 }
 
-//data must be in array form
-function update($tablename,$data,$condition="")
-{
-  //make field list
-  $arr_keys=array();
-  $arr_keys=array_keys($data);
-  $names="";
-  
-  $names.=$arr_keys[0];
-  for($i=1;$i<count($arr_keys);$i++)
-     $names.=",".$arr_keys[$i];
-  
-  //make value list
-  $arr_vals=array();
-  $arr_vals=array_values($data);
-  $values="";
-  
-  $values.="'".$arr_vals[0]."'";
-  for($i=1;$i<count($arr_vals);$i++)
-     $values.=",'".$arr_vals[$i]."'";
-    
-  $query="";
-  $query.=$arr_keys[0]."='".$arr_vals[0]."'";
-  for($i=1;$i<count($arr_keys);$i++)
-     $query.=",".$arr_keys[$i]."='".$arr_vals[$i]."'";
-     
-  $tablename=$_SESSION['db_prefix'].$tablename;
-  $connection=connect();
-  if ($condition!="")
-  {
-	 $result=$connection->query("update ".$tablename." set ".$query." where ".$condition);
-    if ($result===FALSE)
-       return "false";
-    }
-    else
-     {
-	 
-     $result=$connection->query("update ".$tablename." set ".$query);      
-     if ($result===FALSE)
-       return "false";
-     }
 
-    //register log.....
-    if (count($arr_keys)>1)
-      log_register("Update",$tablename,implode(",",$arr_keys),implode(",",$arr_vals));
-      else
-        log_register("Update",$tablename,$arr_keys[0],$arr_vals[0]);  
-    $result->closeCursor();
-	$connection = null;	
-	return $result;
+function update($tenant,$collectionName,$data,$condition=array())
+{
+    
+  $connection=connect($tenant);
+  $collectionName=$connection['tenantCollectionPrefix'].$collectionName;
+  try{    
+  $newdata = array('$set' => $data);
+  $result=$connection['connctionString']->$connection['tenantDbName']->$collectionName->update($condition,$newdata);
+  }
+  catch(MongoException $e)
+  {
+	echo "error message: ".$e->getMessage()."\n";
+  }
 }
 
 

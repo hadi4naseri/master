@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2017-06-27 21:47:35
+<?php /* Smarty version 3.1.27, created on 2019-12-10 20:33:05
          compiled from "D:\wamp\www\Mobina_new\Tenants\main\Assets\Templates\local_themes\G1\index.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:82625952932fcc7581_08668757%%*/
+/*%%SmartyHeaderCode:78885defcfc9103c71_66391104%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,14 +9,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '07fe2caccfdd01678c2c8ec1898d7e8ed3e6d8b9' => 
     array (
       0 => 'D:\\wamp\\www\\Mobina_new\\Tenants\\main\\Assets\\Templates\\local_themes\\G1\\index.tpl',
-      1 => 1490984000,
+      1 => 1575997382,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '82625952932fcc7581_08668757',
+  'nocache_hash' => '78885defcfc9103c71_66391104',
   'variables' => 
   array (
-    'pageSchema' => 0,
+    'Schema' => 0,
     'urlPatch' => 0,
     'siteDomain' => 0,
     'siteLang' => 0,
@@ -27,24 +27,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_59529331002133_33790506',
+  'unifunc' => 'content_5defcfca0581e0_99609195',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_59529331002133_33790506')) {
-function content_59529331002133_33790506 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5defcfca0581e0_99609195')) {
+function content_5defcfca0581e0_99609195 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '82625952932fcc7581_08668757';
+$_smarty_tpl->properties['nocache_hash'] = '78885defcfc9103c71_66391104';
 ?>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo $_smarty_tpl->tpl_vars['pageSchema']->value["pageProperties"]["title"];?>
+<title><?php echo $_smarty_tpl->tpl_vars['Schema']->value["Properties"]["title"];?>
 </title>
-<meta name="keywords" content="<?php echo $_smarty_tpl->tpl_vars['pageSchema']->value['pageProperties']['keywords'];?>
+<meta name="keywords" content="<?php echo $_smarty_tpl->tpl_vars['Schema']->value['Properties']['keywords'];?>
 " />
-<meta name="description" content="" />
+<meta name="description" content="<?php echo $_smarty_tpl->tpl_vars['Schema']->value['Properties']['description'];?>
+" />
 <link href="<?php echo $_smarty_tpl->tpl_vars['urlPatch']->value;?>
 /default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo $_smarty_tpl->tpl_vars['urlPatch']->value;?>
@@ -109,14 +110,14 @@ var siteLang="<?php echo $_smarty_tpl->tpl_vars['siteLang']->value;?>
 			<a href="#" class="button button-alt">More Info</a>
 		</div>
 		<div class="boxB">
-			<p><?php if (findTemplate("news",array(),$_smarty_tpl->tpl_vars['pageSchema']->value) != false) {
-echo $_smarty_tpl->getSubTemplate (findTemplate("news",$_smarty_tpl->tpl_vars['news_ini_data']->value["header"]["templates"],$_smarty_tpl->tpl_vars['pageSchema']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+			<p><?php if (findTemplate("news",array(),$_smarty_tpl->tpl_vars['Schema']->value) != false) {
+echo $_smarty_tpl->getSubTemplate (findTemplate("news",$_smarty_tpl->tpl_vars['news_ini_data']->value["header"]["templates"],$_smarty_tpl->tpl_vars['Schema']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 }?></p>
 			<a href="#" class="button button-alt">More Info</a>
 		</div>
 		<div class="boxC">
-			<p> <?php if (findTemplate("login",array(),$_smarty_tpl->tpl_vars['pageSchema']->value) != false) {
-echo $_smarty_tpl->getSubTemplate (findTemplate("login",$_smarty_tpl->tpl_vars['login_ini_data']->value["templates"],$_smarty_tpl->tpl_vars['pageSchema']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+			<p> <?php if (findTemplate("login",array(),$_smarty_tpl->tpl_vars['Schema']->value) != false) {
+echo $_smarty_tpl->getSubTemplate (findTemplate("login",$_smarty_tpl->tpl_vars['login_ini_data']->value["templates"],$_smarty_tpl->tpl_vars['Schema']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 }?></p>
 		</div>
 	</div>

@@ -13,18 +13,15 @@ $db_main_pass="MB1N@186";
 //define("defaultTenant","Main");
 
 if (!function_exists('dbg')) {
+
 	
 	//Declarations
 	define("masterDomain",$app_protocol."://".$app_host."/Mobina_new_master/");
 	define("tenantDomain",$app_protocol."://".$app_host."/Mobina_new/");
 	define("modulesPath",$_SERVER["DOCUMENT_ROOT"]."Mobina_new_master/Public/Modules/");
+	define("tenantPath",$_SERVER["DOCUMENT_ROOT"]."Mobina_new/Tenants/");
 	define("defaultTenant","main");
-			
 	
-	function check_event($tenantName,$eventName)
-	{
-		
-	}
 	
 	function validateTocken($tenant,$tocken) //check Tocken for authenticate user by session
 	{
@@ -39,6 +36,28 @@ if (!function_exists('dbg')) {
 			return false;
 	}
 	
+	//call every Tenant events from Event collection on adhoc usage
+	function callEvent($tenant,$eventName) 
+	{
+		
+		//execute master events
+		//...
+		
+		//execute Tenant events
+		$eventInfo=select($tenant,"events",array("BROrder"=>1,"hit"=>1,"name"=>1,"enabled"=>1),array("name"=>$eventName));
+		//dbg($eventName);
+		
+		$eventInfo=json_decode($eventInfo,true);
+	
+		if ($eventInfo[0]["enabled"]==true)
+		{
+			include_once(tenantPath.$tenant."/Actions/".$eventInfo[0]["BROrder"]);
+			$eventName();
+			update($tenant,"events",array("hit"=>++$eventInfo[0]["hit"]),array("name"=>$eventName));
+		}
+		
+		
+	}
 	
 	//ToDo : eval security risk
 	function check_condition($operand1,$operator,$operand2)
@@ -102,7 +121,7 @@ if (!function_exists('dbg')) {
 
 	function findSchema($tnt,$name)
 	{
-		$schema=select($tnt,"pageSchema",array("modules"=>1,"name"=>1,"pageProperties"=>1),array("name"=>$name));
+		$schema=select($tnt,"Schema",array("modules"=>1,"name"=>1,"Properties"=>1),array("name"=>$name));
 		return json_decode($schema,true)[0];
 	}
 
@@ -146,7 +165,7 @@ if (!function_exists('dbg')) {
 			
 			
 
-		if($ini["siteConfig"]["langs"][$i]["visibility"]==1)
+	if($ini["siteConfig"]["visibility"]==1)
 		{
 			if ($ini["siteConfig"]["langs"][$langIndex]["theme"][$themeIndex]["isLocal"]==0)
 				$sm->assign("urlPatch",masterDomain."Public/Assets/templates/themes/".$ini["siteConfig"]["langs"][$langIndex]["theme"][$themeIndex]["name"]);
@@ -201,7 +220,7 @@ if (!function_exists('dbg')) {
 
 			}	
 			
-			$sm->assign("pageSchema",$schema);
+			$sm->assign("Schema",$schema);
 			$sm->assign("tenantName",$tenant);
 			if ($content)
 				$sm->assign("content",$content);

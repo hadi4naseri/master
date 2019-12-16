@@ -1,5 +1,5 @@
 <?php
-function logging_initial(&$smartyObj)
+function login_initial(&$smartyObj)
 {
 $tempPath=getcwd();
 
@@ -7,8 +7,10 @@ chdir($_SERVER["DOCUMENT_ROOT"]."Mobina_new_master/Public/App/Db/");
 require_once("functions.php");
 
 $tenant=findTenant($_SERVER['REQUEST_URI']);
-die("logging_ini");
-$raw_data=json_decode(select($tenant,"modules",array(),array("name"=>"logging")),true)[0];
+
+$raw_data=json_decode(select($tenant,"modules",array(),array("name"=>"login")),true)[0];
+
+//doing action on initialize
 
 //doing action on initialize
 

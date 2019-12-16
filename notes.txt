@@ -1,3 +1,16 @@
+
+mongodb backup:
+run cmd as administrator
+run C:\Program Files\MongoDB\Server\3.0\bin>mongodump.exe --host localhost --port 27017 --db نام پایگاه داده --out dump\
+
+restore:
+
+C:\Program Files\MongoDB\Server\3.0\bin>mongorestore.exe --db service_desk dump/نام پایگاه
+
+
+
+
+
 zlib.output_compression = on
 expose_php = On
 ServerTokens ProductOnly
