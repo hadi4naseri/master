@@ -40,3 +40,9 @@ $_SERVER['REQUEST_URI']
 
 ماژولها میتوانند عمومی و خصوصی باشند
 عمومی در مستر و خصوصی در تننت
+
+
+
+//run server side functions
+db.loadServerScripts();
+clearExpiredSessions();

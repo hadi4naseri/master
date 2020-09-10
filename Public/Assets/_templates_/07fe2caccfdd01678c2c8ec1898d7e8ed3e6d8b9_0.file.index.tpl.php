@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2019-12-10 20:33:05
+<?php /* Smarty version 3.1.27, created on 2020-03-12 13:32:43
          compiled from "D:\wamp\www\Mobina_new\Tenants\main\Assets\Templates\local_themes\G1\index.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:78885defcfc9103c71_66391104%%*/
+/*%%SmartyHeaderCode:256655e6a08c3c17617_91188019%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,36 +9,39 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '07fe2caccfdd01678c2c8ec1898d7e8ed3e6d8b9' => 
     array (
       0 => 'D:\\wamp\\www\\Mobina_new\\Tenants\\main\\Assets\\Templates\\local_themes\\G1\\index.tpl',
-      1 => 1575997382,
+      1 => 1584007359,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '78885defcfc9103c71_66391104',
+  'nocache_hash' => '256655e6a08c3c17617_91188019',
   'variables' => 
   array (
+    'siteDomain' => 0,
     'Schema' => 0,
     'urlPatch' => 0,
-    'siteDomain' => 0,
     'siteLang' => 0,
     'content' => 0,
-    'news_ini_data' => 0,
-    'login_ini_data' => 0,
-    'i' => 0,
+    'news_mainNews_ini_data' => 0,
+    'forms_loginForm_ini_data' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5defcfca0581e0_99609195',
+  'unifunc' => 'content_5e6a08c431e993_01733989',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5defcfca0581e0_99609195')) {
-function content_5defcfca0581e0_99609195 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5e6a08c431e993_01733989')) {
+function content_5e6a08c431e993_01733989 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '78885defcfc9103c71_66391104';
+$_smarty_tpl->properties['nocache_hash'] = '256655e6a08c3c17617_91188019';
 ?>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<?php echo '<script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['siteDomain']->value;?>
+Public/Assets/js/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $_smarty_tpl->tpl_vars['Schema']->value["Properties"]["title"];?>
 </title>
@@ -72,15 +75,14 @@ var siteLang="<?php echo $_smarty_tpl->tpl_vars['siteLang']->value;?>
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="#">قالب اولیه</a></h1>
+			<h1><a href="#">IT as a Service</a></h1>
 		</div>
 		<div id="menu">
 			<ul>
-				<li class="active"><a href="#" accesskey="1" title="">Homepage</a></li>
-				<li><a href="#" accesskey="2" title="">Our Clients</a></li>
-				<li><a href="#" accesskey="3" title="">About Us</a></li>
-				<li><a href="#" accesskey="4" title="">Careers</a></li>
-				<li><a href="#" accesskey="5" title="">Contact Us</a></li>
+				<li><a href="#" accesskey="2" title="">ITaaS چیست؟</a></li>
+				<li><a href="#" accesskey="3" title="" >درباره ما</a></li>
+				<li><a href="#" accesskey="5" title="">ارتباط با ما</a></li>
+				<li class="active"><a href="#" accesskey="1" title="">خانه</a></li>
 			</ul>
 		</div>
 	</div>
@@ -88,11 +90,10 @@ var siteLang="<?php echo $_smarty_tpl->tpl_vars['siteLang']->value;?>
 <div id="banner-wrapper">
 	<div id="banner" class="container">
 		<div class="title">
-			<h2> با تولید سادگی نامفهوم </h2>
-			<span class="byline">Donec pulvinar ullamcorper metus</span>
+			<h2> خدمات متمایز فناوری اطلاعات</h2>
 		</div>
 		<ul class="actions">
-			<li><a href="#" class="button">Pulvinar mollis</a></li>
+			<li><a href="#" class="button">بیشتر بدانید</a></li>
 		</ul>
 	</div>
 </div>
@@ -106,42 +107,43 @@ var siteLang="<?php echo $_smarty_tpl->tpl_vars['siteLang']->value;?>
 			<span class="byline">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue</span>
 		</div>
 		<div class="boxA">
-			<p>Phasellus pellentesque, ante nec iaculis dapibus, eros justo auctor lectus, a lobortis lorem mauris quis nunc. Praesent pellentesque facilisis elit. Class aptent taciti sociosqu ad  torquent per conubia nostra.</p>
+			<p>...</p>
 			<a href="#" class="button button-alt">More Info</a>
 		</div>
 		<div class="boxB">
-			<p><?php if (findTemplate("news",array(),$_smarty_tpl->tpl_vars['Schema']->value) != false) {
-echo $_smarty_tpl->getSubTemplate (findTemplate("news",$_smarty_tpl->tpl_vars['news_ini_data']->value["header"]["templates"],$_smarty_tpl->tpl_vars['Schema']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+			
+			<p><?php if (findModuleInSchema("news","mainNews",$_smarty_tpl->tpl_vars['Schema']->value) != false) {
+echo $_smarty_tpl->getSubTemplate (loadTemplate("news","mainNews",$_smarty_tpl->tpl_vars['news_mainNews_ini_data']->value["template"],$_smarty_tpl->tpl_vars['Schema']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 }?></p>
+			
+			
 			<a href="#" class="button button-alt">More Info</a>
 		</div>
 		<div class="boxC">
-			<p> <?php if (findTemplate("login",array(),$_smarty_tpl->tpl_vars['Schema']->value) != false) {
-echo $_smarty_tpl->getSubTemplate (findTemplate("login",$_smarty_tpl->tpl_vars['login_ini_data']->value["templates"],$_smarty_tpl->tpl_vars['Schema']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
-}?></p>
+			
+			<p> <?php if (findModuleInSchema("forms","loginForm",$_smarty_tpl->tpl_vars['Schema']->value) == true) {?>
+			<?php echo $_smarty_tpl->getSubTemplate (loadTemplate("forms","loginForm",$_smarty_tpl->tpl_vars['forms_loginForm_ini_data']->value["template"],$_smarty_tpl->tpl_vars['Schema']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+?>
+
+			<br/>
+			
+			
+			<?php }?></p>
 		</div>
 	</div>
 	<?php } else { ?>
-		<?php $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable;$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? count($_smarty_tpl->tpl_vars['content']->value["data"]["templates"])-1+1 - (0) : 0-(count($_smarty_tpl->tpl_vars['content']->value["data"]["templates"])-1)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
-if ($_smarty_tpl->tpl_vars['i']->total > 0) {
-for ($_smarty_tpl->tpl_vars['i']->value = 0, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
-$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
-			<?php if ($_smarty_tpl->tpl_vars['content']->value["data"]["templates"][$_smarty_tpl->tpl_vars['i']->value]["isDefault"] == 1) {?>
-				<?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['content']->value["data"]["templates"][$_smarty_tpl->tpl_vars['i']->value]["fileName"], $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+		
+		<?php echo $_smarty_tpl->getSubTemplate (loadTemplate("news","mainNews",$_smarty_tpl->tpl_vars['content']->value["template"],NULL), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
-			<?php }?>
-		<?php }} ?>	
+		
 	<?php }?>
 </div>
 
 <div id="copyright" class="container">
-	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+	<p>کلیه حقوق معنوی این سایت متعلق به ITaaS.ir می باشد</p>
 </div>
-<?php echo '<script'; ?>
- type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['siteDomain']->value;?>
-Public/Assets/js/jquery-3.1.1.min.js"><?php echo '</script'; ?>
->
+
 <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['siteDomain']->value;?>
 Public/Assets/js/jquery-ui.min.js"><?php echo '</script'; ?>

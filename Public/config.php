@@ -4,7 +4,7 @@
 
 require_once("App/Db/functions.php");
 $app_protocol="https";
-$app_host="localhost";
+$app_host="192.168.43.4";
 $db_host="localhost";
 $db_auth="admin";
 $db_main="Mobina";
@@ -23,58 +23,56 @@ if (!function_exists('dbg')) {
 	define("defaultTenant","main");
 	
 	
-	function validateTocken($tenant,$tocken) //check Tocken for authenticate user by session
+	function validateToken($tenant,$token) //check Tocken for authenticate user by session
 	{
-		$tockenInfo=select($tenant,"sessions",array("id"=>1,"expireDate"=>1),array("id"=>strrev(substr($tocken,0,strlen($tocken)-10))));
+		$tockenInfo=select($tenant,"sessions",array("id"=>1,"expireDate"=>1),array("id"=>strrev(substr($token,0,strlen($token)-10))));
 		$tockenInfo=json_decode($tockenInfo,true);
 		if (count($tockenInfo)>0)
-			if ($tockenInfo[0]["expireDate"]>time())
+			if ($tockenInfo[0]["expireDate"]>(time()+120))
 				return true;
-			else
-				Session::delete_session($tocken);
+			//else
+				//Session::delete_session($token);
 		else
 			return false;
 	}
 	
 	//call every Tenant events from Event collection on adhoc usage
-	function callEvent($tenant,$eventName) 
+	function callEvent($tenant,$eventName,$handle = "",$data=array()) 
 	{
-		
+		//call with handle or eventname
 		//execute master events
 		//...
 		
-		//execute Tenant events
-		$eventInfo=select($tenant,"events",array("BROrder"=>1,"hit"=>1,"name"=>1,"enabled"=>1),array("name"=>$eventName));
-		//dbg($eventName);
+		if ($handle=="")
+			//execute Tenant events
+			$eventInfo=select($tenant,"events",array("BROrder"=>1,"hit"=>1,"name"=>1,"enabled"=>1,"BRFunctionName"=>1,"type"=>1),array("name"=>$eventName));
+		else
+			$eventInfo=select($tenant,"events",array("BROrder"=>1,"hit"=>1,"name"=>1,"enabled"=>1,"handle"=>1,"BRFunctionName"=>1,"type"=>1),array("handle"=>$handle));
+			//$eventInfo=select($tenant,"events",array("BROrder"=>1,"hit"=>1,"name"=>1,"enabled"=>1),array('$and'=>array(array("name"=>$eventName),array("handle"=>$handle))));
 		
 		$eventInfo=json_decode($eventInfo,true);
-	
-		if ($eventInfo[0]["enabled"]==true)
+		
+		if (count($eventInfo)>0) //if event found
 		{
-			include_once(tenantPath.$tenant."/Actions/".$eventInfo[0]["BROrder"]);
-			$eventName();
-			update($tenant,"events",array("hit"=>++$eventInfo[0]["hit"]),array("name"=>$eventName));
-		}
-		
-		
-	}
-	
-	//ToDo : eval security risk
-	function check_condition($operand1,$operator,$operand2)
-	{
-		$res=json_decode($operand1,true);
-		$result=true;			
-		
-		for($h=0;$h<count($res);$h++)
-		{
-			if (eval("return ".$res[$h]["value"].$operator.$operand2.";"))
+			if ($eventInfo[0]["enabled"]==true)
 			{
-				continue;					
-			}	
-			else
-				$result=false;
+				$retValue="";
+				if ($eventInfo[0]["type"]=="user-defined")
+					include_once(tenantPath.$tenant."/Actions/".$eventInfo[0]["BROrder"]);
+				else
+					include_once("Actions/".$eventInfo[0]["BROrder"]);
+								
+				$retValue=$eventInfo[0]["BRFunctionName"]($data);
+				
+				if ($handle=="")
+				update($tenant,"events",array("hit"=>++$eventInfo[0]["hit"]),array("name"=>$eventName));
+				else
+				update($tenant,"events",array("hit"=>++$eventInfo[0]["hit"]),array("handle"=>$handle));
+				
+				return $retValue;
+			}
 		}
-		return $result;	
+		
 	}
 	
 	function dbg() {
@@ -95,28 +93,23 @@ if (!function_exists('dbg')) {
 					return "Mobina";
 	}
 
-	function findTemplate($moduleName,$templateArray=array(),$pgschema)
-	{
-		
+	//آیا ماژول در اسکیما موجود است یا نه؟
+	function findModuleInSchema($moduleName,$moduleHandle,$pgschema)
+	{			
 		for ($k=0;$k<count($pgschema["modules"]);$k++)
-			if (array_search($moduleName,$pgschema["modules"][$k]))
-			{
-				if (count($templateArray)>0)
-				{	
-					for($i=0;$i<count($templateArray);$i++)
-						if($templateArray[$i]["isDefault"]==1)
-							break;
-					//die(print_r($templateArray[$i]));
-					
-					if ($templateArray[$i]["isLocal"]==false)
-						return $templateArray[$i]["name"]."/".$templateArray[$i]["fileName"];
-					else
-						return $moduleName."/templates/".$templateArray[$i]["fileName"];
-				}
-				else
-					return $moduleName."/templates/".$moduleName.".tpl";
-			}
+			
+			if (trim($moduleName)== trim($pgschema["modules"][$k]["name"]) && trim($pgschema["modules"][$k]["handle"])==trim($moduleHandle))
+				return true;
 		return false;
+	}
+	
+	function loadTemplate($moduleName,$moduleHandle,$templateArray=array(),$pgschema=NULL)
+	{
+			if ($templateArray["isLocal"]==false)
+				return $moduleName."/templates/".$templateArray["fileName"];
+			else
+				return $moduleName."/templates/".$templateArray["fileName"];
+		
 	}
 
 	function findSchema($tnt,$name)
@@ -174,6 +167,7 @@ if (!function_exists('dbg')) {
 				
 			$sm->assign("siteDomain",masterDomain);
 			$sm->assign("tenantDomain",tenantDomain);
+			$sm->assign("modulePath",modulesPath);
 			
 			//Page initiatioin...
 					
@@ -187,10 +181,11 @@ if (!function_exists('dbg')) {
 				{
 				  $func_name=$modules[$j]["name"]."_initial";
 				  require_once(modulesPath.$modules[$j]["name"]."/initial.php");
-				  $ini_data=$func_name($sm);
-				  $sm->assign($modules[$j]["name"]."_ini_data",$ini_data);
+				  $ini_data=$func_name($sm,$modules[$j]["handle"]);
+				  $sm->assign($modules[$j]["name"]."_".$modules[$j]["handle"]."_ini_data",$ini_data);
 				}
 			}
+			/*
 			if ($content)
 			{		
 				$addons=$content["data"]["addons"];
@@ -206,31 +201,35 @@ if (!function_exists('dbg')) {
 					  $sm->assign($addons[$j]["name"]."_".$addons[$j]["handle"]."_ini_data",$ini_data);
 					}
 				}
-			}
+			}*/
 			
-			if (isset($_COOKIE['userTocken']) && validateTocken($tenant,$_COOKIE['userTocken']))
+			if (isset($_COOKIE['userToken']) && validateToken($tenant,$_COOKIE['userToken']))
 			{
-				$cookieInfo=select($tenant,"sessions",array(),array("id"=>strrev(substr($_COOKIE['userTocken'],0,strlen($_COOKIE['userTocken'])-10))));
+				$cookieInfo=select($tenant,"sessions",array(),array("id"=>strrev(substr($_COOKIE['userToken'],0,strlen($_COOKIE['userToken'])-10))));
 				$cookieInfo=json_decode($cookieInfo,true)[0];
 				
 				if ($cookieInfo['expireDate']>time())
 					$sm->assign("userName",$cookieInfo['name']);
 				else
-					Session::delete_session(strrev(substr($_COOKIE['userTocken'],0,strlen($_COOKIE['userTocken'])-10)));
+					Session::delete_session(strrev(substr($_COOKIE['userToken'],0,strlen($_COOKIE['userToken'])-10)));
 
 			}	
 			
 			$sm->assign("Schema",$schema);
 			$sm->assign("tenantName",$tenant);
-			if ($content)
+			if ($content!= "")
 				$sm->assign("content",$content);
 			else	
 				$sm->assign("content","");
 			
 			if ($ini["siteConfig"]["langs"][$langIndex]["theme"][$themeIndex]["isLocal"]==1)
-				$sm->display("local_themes/".$ini["siteConfig"]["langs"][$langIndex]["theme"][$themeIndex]["name"]."/".$ini["siteConfig"]["langs"][$langIndex]["theme"][$themeIndex]["fileName"]);
+			{	
+			$sm->display("local_themes/".$ini["siteConfig"]["langs"][$langIndex]["theme"][$themeIndex]["name"]."/".$ini["siteConfig"]["langs"][$langIndex]["theme"][$themeIndex]["fileName"]);
+			return $sm;
+			}			
 			else
-				$sm->display("themes/".$ini["siteConfig"]["langs"][$langIndex]["theme"][$themeIndex]["name"]."/".$ini["siteConfig"]["langs"][$langIndex]["theme"][$themeIndex]["fileName"]);
+			{	$sm->display("themes/".$ini["siteConfig"]["langs"][$langIndex]["theme"][$themeIndex]["name"]."/".$ini["siteConfig"]["langs"][$langIndex]["theme"][$themeIndex]["fileName"]);
+			return $sm;}
 		}
 		//if visibility for specific language is set to 0
 		//ToDo : theme for error pages
@@ -239,4 +238,5 @@ if (!function_exists('dbg')) {
 			die("site for this language is not visible");
 		}
 	}
+	
 }	

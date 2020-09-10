@@ -1,6 +1,11 @@
 <div style="width:100%;text-align:justify;">
 
+Test for admin panel
+<br/>
 
+<a class="general fancybox fancybox.ajax" href="A.php">تست</a>
+
+{*
 {include file=loadTemplate($news_mainNews_ini_data["addons"]["like_news_main"]["moduleName"],$news_mainNews_ini_data["addons"]["like_news_main"]["handle"],$news_mainNews_ini_data["addons"]["like_news_main"]["template"],NULL)}
 
 
@@ -13,7 +18,9 @@
 {$news_mainNews_ini_data["content"][$i]["shortDescription"]}
 </p>
 {/for}
+*}
 
+<br/>
 
 <small>template from global tenant</small>
 </div>
